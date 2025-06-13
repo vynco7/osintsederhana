@@ -19,7 +19,7 @@ Versi penuh OSINT tanpa modul tambahan eksternal. Dibuat khusus untuk penelusura
 
 🧪 Cara Pakai
 
-$ python3 MuthairOSINT_Full.py
+$ python3 osint.py
 🧠 Masukkan nama target: John Doe
 
 Semua hasil dork, email, kebocoran, metadata, dan PDF akan disimpan otomatis.
