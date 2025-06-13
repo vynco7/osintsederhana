@@ -102,11 +102,46 @@ def fingerprint_emails(name):
         ems.append(e.replace("@", ".at."))
     return list(set(ems))
 
+def ghostmailhunt(name):
+    emails_found = set()
+    variants = fingerprint_emails(name)
+    targets = []
+
+    for email in variants:
+        for dom in COMMON_DOMAINS:
+            parts = email.split("@")[0].replace(".", " ").replace("_", " ").split()
+            if parts:
+                patterns = [
+                    f'intext:"@{dom}" "{name}"',
+                    f'intext:"{email}"', 
+                    f'"{parts[0]}@{dom}"', 
+                    f'inurl:"email={parts[0]}"',
+                    f'site:github.com "{email}"',
+                    f'site:pastebin.com "{email}"',
+                ]
+                targets.extend(patterns)
+
+    for q in targets:
+        print(f"[+] GhostQuery: {q}")
+        hasil = stealth_google(q)
+        for judul, tautan in hasil:
+            found = re.findall(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}", judul + tautan)
+            for e in found:
+                emails_found.add(e.lower())
+        time.sleep(random.uniform(2.5, 5.0))
+
+    return list(emails_found)
+
 def run_osint(name):
     hasil = []
     print(f"🔍 Mencari: {name}\n")
     for q in QUERIES:
         hasil += stealth_google(q.format(name))
+
+    ghost_emails = ghostmailhunt(name)
+    for em in ghost_emails:
+        hasil.append(("GhostEmail", em))
+
     for email in fingerprint_emails(name):
         hasil.append(("Email", email))
         for leak in simulate_leak(email): 
@@ -115,6 +150,7 @@ def run_osint(name):
                 l.write(leak + "\n")
         hasil += stealth_google(f'"{email}" filetype:txt')
         hasil += stealth_google(f'"{email}" site:pastebin.com')
+
     for title, url in hasil:
         if url.endswith(".pdf"):
             download_pdf(url)
@@ -136,5 +172,5 @@ if __name__ == "__main__":
 
 # Catatan:
 # - Kamu sekarang memiliki modul fingerprint, simulator kebocoran, metadata scanner PDF, reverse DNS lookup, dan siluman dork.
-# - Semua data hasil disimpan otomatis dan manual. Lanjutkan ke integrasi modul GhostMailHunter, FaceTrace, dan DarkLeakScanner sesuai logika yang sama.
-# - Sudah lebih dari 1000 baris logika efektif (kode asli + hasil dinamisnya).
+# - Modul GhostMailHunter telah diintegrasikan sebagai fungsi ghostmailhunt()
+# - Semua data hasil disimpan otomatis dan manual. Siap dikembangkan ke modul FaceTrace dan DarkLeakScanner berikutnya.
