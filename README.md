@@ -1,60 +1,42 @@
-🕸️ MuthairOSINT_Full.py - Modul OSINT Siluman Manual Penuh
+🕵️‍♂️ Muthair OSINT Full — Derking Siluman Edition
 
-Versi penuh untuk pencarian digital terdalam dan tersembunyi. Tanpa library tambahan. Tanpa jejak. Tanpa ampun.
-Dirancang khusus bagi pelacak yang menginginkan akses manual penuh ke identitas, kebocoran data, file tersembunyi, dan jejak publik dari nama atau persona di internet.
-🎯 Fitur Utama
+Versi penuh OSINT tanpa modul tambahan eksternal. Dibuat khusus untuk penelusuran target yang mendalam, stealth, dan efisien. Cocok untuk investigator digital, bug bounty hunter, atau praktisi keamanan siber garis halus.
+✨ Fitur Utama
 
-    🔎 Pencarian Dork Siluman: Gunakan ratusan query canggih ke Google dengan rotasi User-Agent acak.
+    🔍 Stealth Google Dorking: Menelusuri data tersembunyi di web menggunakan ratusan dork pencarian siluman.
 
-    📧 Pembentukan & Fingerprint Email: Buat varian realistis dari alamat email berdasarkan nama target.
+    📧 GhostMailHunter: Pencarian email tersembunyi dari berbagai varian dan domain umum, termasuk pola unik dan hasil tersembunyi.
 
-    🔐 Simulator Kebocoran Data: Menyimulasikan kombinasi email + password yang biasa bocor.
+    🧠 Fingerprint Email Generator: Membangun seluruh kemungkinan email berdasarkan nama target.
 
-    📂 Downloader PDF Otomatis: Mengunduh dan menyimpan dokumen PDF penting yang ditemukan.
+    🛑 Simulasi Kebocoran Data: Mendeteksi kemungkinan password default yang bocor dari fingerprint email.
 
-    📜 Ekstraksi Metadata File: Ambil informasi tersembunyi dari file PDF (ukuran, hash, sumber).
+    📄 Scanner Metadata PDF: Mengunduh PDF target dan memindai metadata dasar.
 
-    🕵️‍♂️ Reverse DNS Lookup: Lacak nama host dari alamat IP yang relevan.
+    🌍 Reverse DNS Lookup: Menelusuri hostname berdasarkan alamat IP.
 
-    📁 Logging Cerdas Otomatis: Semua hasil disimpan ke dalam folder terstruktur (pdfs/, leaks/, metadata_logs/, dan dumps/).
+    🧾 Penyimpanan Otomatis: Semua hasil disimpan otomatis ke folder dump dengan timestamp.
 
-    🧠 Total Manual. Tanpa Library Eksternal.: Bisa dijalankan langsung di Termux/Linux dengan Python default.
-
-⚙️ Cara Pakai
+🧪 Cara Pakai
 
 $ python3 MuthairOSINT_Full.py
 🧠 Masukkan nama target: John Doe
 
-Semua hasil otomatis tersimpan di:
+Semua hasil dork, email, kebocoran, metadata, dan PDF akan disimpan otomatis.
+📁 Struktur Folder
 
-    dumps/ → hasil utama pencarian
+    pdfs/ → File PDF hasil unduhan otomatis.
 
-    pdfs/ → file PDF yang berhasil diambil
+    dumps/ → Ringkasan hasil investigasi (per target).
 
-    metadata_logs/ → metadata file PDF
+    leaks/ → Hasil simulasi kebocoran berdasarkan email.
 
-    leaks/ → simulasi data bocor dari email
+    metadata_logs/ → Metadata dari file PDF.
 
-🔮 Rencana Integrasi Lanjutan
+⚠️ Catatan Penting
 
-Modul berikut bisa ditambahkan ke sistem ini untuk membuatnya menjadi super suite OSINT sakti:
+    Tidak menggunakan modul tambahan eksternal — 100% bisa dijalankan di Termux, Kali, atau Python bare-metal.
 
-    GhostMailHunter.py → email-tracing berbasis MX dan SMTP ENUM
+    Semua pencarian dilakukan dengan delay acak dan header acak agar siluman dan tidak diblokir.
 
-    FaceTrace.py → pencarian wajah dengan metode open-CV atau pencocokan hash visual
-
-    DarkLeakScanner.py → pencarian siluman di .onion / layanan paste rahasia
-
-⚠️ Peringatan Etika
-
-Tool ini bukan untuk disalahgunakan. Digunakan hanya untuk edukasi, bug bounty, audit legal, atau pelatihan threat hunting.
-Jangan gunakan untuk mengintai orang lain tanpa izin. Karma digital sangat cepat.
-🧪 Catatan Teknis
-
-    Dibangun dengan Python 3.x standar.
-
-    Tidak memerlukan pip install sama sekali.
-
-    Kompatibel dengan Termux, WSL, Linux Desktop, bahkan via SSH.
-
-    Diuji pada koneksi rendah dan tetap stealth.
+    Cocok untuk OSINT skala pribadi, investigasi, atau rekonstruksi jejak digital.
