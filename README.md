@@ -1,4 +1,4 @@
-🕵️‍♂️ Muthair OSINT Full — Derking Siluman Edition
+#🕵️‍♂️ OSINT — Derking Siluman Edition
 
 Versi penuh OSINT tanpa modul tambahan eksternal. Dibuat khusus untuk penelusuran target yang mendalam, stealth, dan efisien. Cocok untuk investigator digital, bug bounty hunter, atau praktisi keamanan siber garis halus.
 ✨ Fitur Utama
